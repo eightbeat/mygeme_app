@@ -1,0 +1,23 @@
+<div class="well col-md-8 col-md-offset-2">
+  <h4 class="center description"><strong>Description: </strong></h4>
+  <hr />
+  <%= @game.description %>
+  <hr />
+  <div class="pull-right">
+    <p class="center">
+      Created by:
+    </p>
+    <p class="center">
+      <%= link_to gravatar_for(@game.user), games_path %>
+    </p>
+    <p>
+      <small><%= @game.user.name %></small>
+      <div class="pull-right">
+        <%= time_ago_in_words(@game.created_at) %> ago
+      </div>
+    </p>
+  </div>
+  <%= link_to "レビューを削除する", game_path(@game), method: :delete,
+                                        data: { confirm: "削除しますか?" },
+                                        class: "btn btn-xs btn-danger" %>
+</div>

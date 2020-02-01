@@ -1,0 +1,97 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+body {
+  font-family: 'Lato';
+  padding: 0;
+  margin: 0;
+}
+
+.jumbotron {
+  background-image: asset-url('top.jpg');
+  background-size: cover;
+  background-position:center bottom;
+  width: 100%;
+  height: 600px;
+  padding-top: 150px;
+  h1 {
+    color: #fffafa;
+  }
+  h2 {
+    color: #fffafa;
+  }
+}
+
+.container {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.container
+  .form-signin {
+  width: 400px;
+  margin-top: 150px;
+}
+
+.btn-xl {
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+.bg-black {
+  background-color: #000 !important;
+}
+
+
+.navbar-custom {
+  width: 100%;
+  height: 60px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0);
+
+  .navbar-brand {
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+    padding-left: 30px;
+    margin-top: 0;
+  }
+
+  .navbar-nav .nav-item  {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    list-style: none;
+    padding-left: 15px;
+    padding-top: 15px;
+  }
+}
+
+.p-5 {
+  .img-circle {
+  border-radius: 50%;
+  padding-top: 30px;
+ }
+  .p {
+    margin-top: 30px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  h1 {
+    padding-top: 80px;
+    font-weight: bold;
+    font-size: 10;
+  }
+}
+
+.py-5 {
+  margin-top: 30px;
+  height: 80px;
+}

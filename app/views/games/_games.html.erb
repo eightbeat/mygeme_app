@@ -1,0 +1,16 @@
+<% obj.each do |game| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class="user_info center">
+        <%= gravatar_for(game.user, size: 80) %>
+      </section>
+    </div>
+    <div class="col-md-8 well">
+      <h4><%= link_to game.name, game_path(game) %></h4>
+      <p><%= truncate(game.description, length: 150) %></p>
+      <p>
+       <span class="quiet"><small>投稿日 <%= time_ago_in_words(game.created_at) %> 前</small></span>
+      </p>
+    </div>
+  </div>
+<% end %>
