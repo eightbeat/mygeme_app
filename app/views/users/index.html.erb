@@ -1,0 +1,17 @@
+<div align="center">
+  <%= will_paginate %>
+  <% @users.each do |user| %>
+    <ul class="listing">
+      <div class="row">
+        <div class="well col-md-4 col-md-offset-4">
+          <li><%= link_to gravatar_for(user), user_path(user) %></li>
+          <li class="user-title"><%= link_to user.name.capitalize, user_path(user) %></li>
+          <li><small><%= pluralize(user.games.count, "game") if user.games %></small></li>
+          <li><%= link_to "ユーザーを削除する", user_path(user), method: :delete,
+                data: {confirm: "ユーザーと関連する全てのレビューを削除しますか？"} %></li>
+        </div>
+      </div>
+    </ul>
+  <% end %>
+  <%= will_paginate %>
+</div>
