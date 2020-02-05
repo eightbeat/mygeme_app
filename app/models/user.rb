@@ -6,6 +6,6 @@ class User < ApplicationRecord
                           format: { with: VALID_EMAIL_REGEX },
                           uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 5 },  allow_nil: true  #allow_nil: true 対象の値がnilの場合にバリデーションをスキップ
-  has_many :games
+  has_many :games, dependent: :destroy
   has_secure_password
 end
