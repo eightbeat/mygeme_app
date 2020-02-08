@@ -7,6 +7,7 @@ class GamesDeleteTest < ActionDispatch::IntegrationTest
   end
 
   test "successfully delete a game" do
+    sign_in_as(@user, "password")
     get game_path(@game)
     assert_template 'games/show'
     assert_select 'a[href=?]', game_path(@game), text: "レビューを削除する"

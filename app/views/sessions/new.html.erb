@@ -1,13 +1,9 @@
 <div class="row">
   <div class="col-md-12">
-    <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
       <div class="form-wrapper">
-        <h1>新規登録</h1>
+        <h1>ログイン</h1>
         <form>
-          <div class="form-item">
-            <label for=name></label>
-            <%= f.text_field :name, class: "form-control", placeholder: "名前", autofocus: true %>
-          </div>
           <div class="form-item">
             <label for="email"></label>
             <%= f.email_field :email, class: "form-control", placeholder: "メールアドレス" %>
@@ -17,8 +13,6 @@
             <%= f.password_field :password, class: "form-control", placeholder: "パスワード" %>
           </div>
           <div class="form-item">
-            <label for="password"></label>
-            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "確認用パスワード" %>
           <div class="button-panel">
             <input type="submit" class="button" title="Sign In" value="送信"></input>
           </div>

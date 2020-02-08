@@ -11,6 +11,12 @@
       <p>
        <span class="quiet"><small>投稿日 <%= time_ago_in_words(game.created_at) %> 前</small></span>
       </p>
+      <% if logged_in? && (current_user == game.user) %>
+        <%= link_to "レビューを編集する", edit_game_path(game), class: 'btn btn-xs btn-warning' %>
+        <%= link_to "レビューを削除する", game_path(game), method: :delete,
+                                              data: { confirm: "本当に削除しますか?" },
+                                              class: "btn btn-xs btn-danger" %>
+      <% end %>
     </div>
   </div>
 <% end %>

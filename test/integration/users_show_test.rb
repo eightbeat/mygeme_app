@@ -10,6 +10,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
   end
 
   test "should show user page" do
+    sign_in_as(@user, "password")
     get user_path(@user)
     assert_template 'users/show'
     assert_select 'a[href=?]', game_path(@game),
