@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
@@ -38,9 +40,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    flash[:danger] = "ユーザーと関連する全てのレビューを削除しました。"
-    redirect_to users_path
+    if !@user.admin?
+      @user.destroy
+      flash[:danger] = "ユーザーと関連する全てのレビューを削除しました。"
+      redirect_to users_path
+    end
   end
 
   private
@@ -51,5 +55,19 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    if current_user != @user and !current_user.admin?
+      flash[:danger] = "管理者しか編集できません。"
+      redirect_to users_path
+    end
+  end
+
+  def require_admin
+    if logged_in? && !current_user.admin?
+      flash[:danger] = "この操作が管理者しかできません。"
+      redirect_to root_path
+    end
   end
 end

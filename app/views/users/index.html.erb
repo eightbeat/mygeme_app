@@ -7,8 +7,10 @@
           <li><%= link_to gravatar_for(user), user_path(user) %></li>
           <li class="user-title"><%= link_to user.name.capitalize, user_path(user) %></li>
           <li><small><%= pluralize(user.games.count, "game") if user.games %></small></li>
-          <li><%= link_to "ユーザーを削除する", user_path(user), method: :delete,
-                data: {confirm: "ユーザーと関連する全てのレビューを削除しますか？"} %></li>
+          <% if logged_in? && current_user.admin? && !user.admin? %>
+            <li><%= link_to "ユーザーを削除する", user_path(user), method: :delete,
+                  data: {confirm: "ユーザーと関連する全てのレビューを削除しますか？"} %></li>
+          <% end %>
         </div>
       </div>
     </ul>

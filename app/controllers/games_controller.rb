@@ -55,7 +55,7 @@ class GamesController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @game.user
+    if current_user != @game.user and !current_user.admin?
       flash[:danger] = "このレビューは編集できません。"
       redirect_to games_path
     end

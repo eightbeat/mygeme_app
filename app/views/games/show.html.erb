@@ -17,7 +17,7 @@
       </div>
     </p>
   </div>
-  <% if logged_in? && (current_user == @game.user) %>
+  <% if logged_in? && (current_user == @game.user || current_user.admin?) %>
     <%= link_to "レビューを編集する", edit_game_path(@game), class: 'btn btn-xs btn-warning' %>
     <%= link_to "レビューを削除する", game_path(@game), method: :delete,
                                           data: { confirm: "本当に削除しますか?" },
